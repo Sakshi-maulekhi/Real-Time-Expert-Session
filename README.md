@@ -1,58 +1,207 @@
-# mern-events-app
-Welcome to the MERN Events App repository! This is a comprehensive Event Management System built using the MERN (MongoDB, Express, React, Node.js) stack. The app allows
-users to effortlessly explore, review, and book events at designated venues, on specific dates and time slots.
-Below is a detailed guide to understand the app effectively.
+# ExpertConnect – Real-Time Expert Session Booking System
 
-## Introduction
-MERN Events App is a full-stack web application designed to simplify event booking and management. The app consists of two modules: **Users and Admin**. Users can browse, review, and book events, while Admins have full control over user management, event creation, timeslots management, review management, bookings management and more. 
-The app implements various modern web development concepts and technologies, including all important topics of React, MongoDB database, Node.js server, and Express.js framework.
+## Overview
 
-## Features
-- **Event Exploration:** Users can browse through a list of events, view event details, venue information, and pricing per person. They can also see the minimum and maximum guest sizes allowed for event.
+ExpertConnect is a MERN stack web application that allows users to discover industry experts, explore their profiles, and book personalized mentorship or consultation sessions.
 
-- **Dynamic Pricing:** As users specify the number of guests they plan to bring, the pricing adjusts dynamically, ensuring transparency and flexibility in event selection.
+The platform includes expert listings, booking management, booking status tracking, duplicate booking prevention, and a responsive user interface.
 
-- **Booking System:** Users can book events by selecting a specific timeslot and day. The system automatically checks availability, preventing double bookings and ensuring event integrity.
+---
 
-- **User Authentication:** Users are required to log in to access review and booking features. Authentication is implemented using JSON Web Tokens (JWT) for secure user sessions.
+# Features
 
-- **User Reviews:** Authenticated users can leave reviews for events they've attended, sharing their experiences and opinions.
+## 1. Expert Listing
 
-- **Admin Privileges:** Admins have access to a dedicated admin panel where they can manage users, events, timeslots, reviews, and bookings. They can perform CRUD operations seamlessly.
+* Browse expert profiles
+* Search experts by name
+* Filter experts by category
+* Pagination support
+* Responsive expert cards
 
-- **Modern UI with React:** The app boasts a user-friendly and responsive interface created with React, leveraging hooks, state management, and reusable components.
+## 2. Expert Detail Page
 
-## Key Modules:
+* Detailed expert information
+* Expertise and experience display
+* Available date and slot selection
+* Booking form integration
 
-- **Home Section:** The app greets users with an inviting home page, showcasing featured events and an overview of its diverse offerings.
+## 3. Session Booking System
 
-- **Event Gallery:** Users can leisurely browse through a gallery of events, each elegantly displayed with captivating visuals and relevant details.
+* Book expert sessions
+* Form validation
+* Booking success/error messages
+* Prevents duplicate slot booking
 
-- **Services Showcase:** A dedicated section highlights the comprehensive range of services the app provides, creating an all-inclusive experience.
+## 4. My Bookings
 
-- **Featured Events:** Catching the eye, the Featured Events section showcases standout events that pique users' interest and curiosity.
+* View bookings by email
+* Booking status tracking:
 
-- **Review Section:** Users can share their experiences and insights by posting reviews for events they've attended, enriching the app's community.
+  * Pending
+  * Confirmed
+  * Completed
+* Dynamic booking status UI badges
 
-- **Booking Section:** Seamlessly, users can book an event by selecting a specific date and time slot, all while seeing real-time updates on guest size and cost.
+## 5. Backend Features
 
-- **About Us:** This section provides insight into the app's background, objectives, and the team that has made it possible.
+* REST APIs using Express.js
+* MongoDB database integration
+* Mongoose models and schema validation
+* Proper folder structure
+* Error handling
+* Environment variables support
 
-- **Search Functionality:** A user-friendly search bar allows users to swiftly locate specific events, streamlining their journey.
+---
 
-## Concepts and Technologies Used
+# Tech Stack
 
-- **React Concepts:** The app extensively uses all concepts of React including functional components, Context API, hooks (useState, useEffect, useRef), props,dynamic rendering, forms and state management techniques.
+## Frontend
 
-- **Node.js and Express:** The server is built using Node.js and Express.js, RESTful API facilitating seamless data retrieval, user authentication, and data manipulation.
+* React.js
+* React Router
+* Reactstrap
+* CSS
 
-- **MongoDB Database:** MongoDB is employed for database storage, with Mongoose as the ODM (Object Document Mapper) for interaction with the database.
+## Backend
 
-- **User Authentication:** Authentication is implemented using JWT tokens, hashing passwords using bcrypt, Custom middleware functions to verify user authentication and authorization. ensuring secure user sessions and protected routes.
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
 
-- **Role-Based Access Control:** Different user roles (user and admin) are defined with distinct permissions.
+---
 
-#
-Thank you for visiting this repository, and I hope you find this project helpful in your learning journey! Feel free to explore the project. If you have any questions or suggestions, contact me at fatimaiqbalmirza002@gmail.com
+# Folder Structure
 
-Happy coding!✨
+```bash
+client/
+ ├── src/
+ │    ├── components/
+ │    ├── pages/
+ │    ├── assets/
+ │    ├── data/
+ │    └── router/
+
+server/
+ ├── Controllers/
+ ├── models/
+ ├── routes/
+ ├── utils/
+ └── index.js
+```
+
+---
+
+# APIs Implemented
+
+## Experts APIs
+
+### Get All Experts
+
+```http
+GET /api/v1/events
+```
+
+### Get Expert By ID
+
+```http
+GET /api/v1/events/:id
+```
+
+---
+
+## Booking APIs
+
+### Create Booking
+
+```http
+POST /api/v1/booking
+```
+
+### Get All Bookings
+
+```http
+GET /api/v1/booking
+```
+
+### Get Bookings By Email
+
+```http
+GET /api/v1/booking?email=user@gmail.com
+```
+
+### Update Booking
+
+```http
+PUT /api/v1/booking/:id
+```
+
+### Delete Booking
+
+```http
+DELETE /api/v1/booking/:id
+```
+
+---
+
+# Duplicate Booking Prevention
+
+The application prevents multiple users from booking:
+
+* Same expert
+* Same date
+* Same time slot
+
+Validation is handled in the backend before saving bookings.
+
+---
+
+# Environment Variables
+
+Create a `.env` file inside the server folder:
+
+```env
+PORTNO=8000
+MONGODB_URL=your_mongodb_connection_string
+JWT_SECRET_KEY=your_secret_key
+```
+
+---
+
+# Installation & Setup
+
+## Clone Repository
+
+```bash
+git clone <your-github-repository-link>
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd server
+npm install
+npm start
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd client
+npm install
+npm start
+```
+
+---
+
+# Future Improvements
+
+* Real-time slot updates using Socket.io
+* Payment gateway integration
+* Admin dashboard
+* Email notifications
+* Video consultation integration
